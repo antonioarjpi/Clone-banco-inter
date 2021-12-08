@@ -9,7 +9,7 @@ import {
     UpdateDateColumn
 } from 'typeorm';
 
-import {User} from './User';
+import {Users} from './Users';
 
 @Entity()
 export class Pix {
@@ -29,12 +29,12 @@ export class Pix {
     @UpdateDateColumn()
     updateAT: Date
 
-    @ManyToOne(() => User, user => user.id, {nullable: true})
+    @ManyToOne(() => Users, user => user.id, {nullable: true})
     @JoinColumn()
-    requestingUser: User;
+    requestingUser: Users;
 
-    @ManyToOne(() => User, user => user.id, {nullable: true})
+    @ManyToOne(() => Users, user => user.id, {nullable: true})
     @JoinColumn()
-    payingUser: User;
+    payingUser: Users;
 
 }

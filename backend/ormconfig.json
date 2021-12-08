@@ -3,9 +3,9 @@
     "type":"postgres",
     "host":"localhost",
     "port": 5432,
-    "username":"admin",
-    "password":"inter-clone",
-    "database":"inter",
+    "username":"postgres",
+    "password":"root",
+    "database":"db_inter",
     "entities":["src/entity/*.ts"],
     "logging":false,
     "synchronize":true
