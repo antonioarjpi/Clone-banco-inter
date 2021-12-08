@@ -4,6 +4,8 @@ import md5 from 'crypto-js/md5'
 import { UserSignIn } from './dto/user.signin.dto';
 import { UserSignUp } from './dto/user.signup.dto';
 import AppError from '../../shared/error/AppError';
+import { sign } from 'jsonwebtoken';
+import authConfig from '../../config/auth'
 
 export default class UserService{
 
@@ -18,11 +20,58 @@ export default class UserService{
             throw new AppError('Usuário não encontrado', 401);
         }
 
-        return existUser;
+        const { secret, expiresIn } = authConfig.jwt;
 
+        const token = sign({
+           firstName: existUser.firstName,
+           lastName: existUser.lastName,
+           accountNumber: existUser.accountNumber,
+           accountDigit: existUser.accountDigit,
+           wallet: existUser.wallet
+        }, secret, {
+           subject: existUser.id,
+           expiresIn,
+        });
+ 
+        // @ts-expect-error ignora
+        delete existUser.password
+        
+        return {accessToken: token}
     }
 
     async signup(user: UserSignUp){
+        const userRepository = getRepository(Users);
+
+        const existUser = await userRepository.findOne({where: {email: user.email}})
+
+        if(existUser){
+          throw new AppError('Já existe um usuário cadastrado com esse email', 401);
+        }
+
+        const userData = {
+            ...user,
+            password: md5(user.password).toString(),
+            wallet: 0,
+            accountNumber: Math.floor(Math.random() * 999999),
+            accountDigit: Math.floor(Math.random() * 99)
+        }
+
+        const userCreate =  await userRepository.save(userData);
+
+        const { secret, expiresIn } = authConfig.jwt;
+        
+        const token = sign({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            accountNumber: userData.accountNumber,
+            accountDigit: userData.accountDigit,
+            wallet: userData.wallet
+        }, secret, {
+            subject: userCreate.id,
+            expiresIn,
+        });
+         
+        return {accessToken: token}
         
     }
 }
