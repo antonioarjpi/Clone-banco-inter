@@ -1,4 +1,4 @@
-import 'express-async-errors';
+import 'express-async-errors'
 import express from 'express';
 import { Connection, createConnection  } from 'typeorm';
 import { globalErrors } from './middlewares/globalErrors';

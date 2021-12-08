@@ -42,7 +42,7 @@ export default class UserService{
     async signup(user: UserSignUp){
         const userRepository = getRepository(Users);
 
-        const existUser = await userRepository.findOne({where: {email: user.email}})
+        const existUser = await userRepository.findOne({where: {email: user.email}});
 
         if(existUser){
           throw new AppError('Já existe um usuário cadastrado com esse email', 401);
@@ -73,5 +73,19 @@ export default class UserService{
          
         return {accessToken: token}
         
+    }
+
+    async me(user: Partial<Users>){
+        const userRepository = getRepository(Users);
+        const currentUser = await userRepository.findOne({where: {id: user.id}});
+
+        if (!currentUser){
+            throw new AppError("Usuário não encontrado", 401);
+        }
+
+        //@ts-expect-error
+        delete currentUser.password;
+
+        return currentUser;
     }
 }
