@@ -5,8 +5,10 @@ export const CardContainer = styled.div<{
     height: string;
     noShadow: boolean;
 }>`
+
     width: ${(props) => props.width};
     height: ${(props) => props.height};
+    background: ${({theme}) => theme.colors.background};
 
     ${(props) => !props.noShadow && css `
         box-shadow: 5px 4px 6px rgba(0,0,0,0.25);
