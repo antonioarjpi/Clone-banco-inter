@@ -17,8 +17,7 @@ const SignIn = () => {
         <Wrapper>
             <Background image={background}/>
             <Card width="403px" height="auto">
-                <img src={logoInter} width={172} height={61} alt="logo inter" />
-
+                <img src={logoInter} width={172} height={61} alt="logo inter"/>
                 <InputContainer>
                     <Input placeholder="EMAIL"/>
                     <Input placeholder="SENHA" type="password"/>
