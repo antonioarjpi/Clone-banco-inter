@@ -23,7 +23,7 @@ const SignIn = () => {
                     <Input placeholder="SENHA" type="password"/>
                 </InputContainer>
                 <ButtonContainer>
-                    <Button type="button" onClick={handleToSingIn}>ENTRAR</Button>
+                    <Button type="button" onClick={handleToSingIn}>Entrar</Button>
                     <p>Ainda não tem cadastro? <Link to="/signup">Cadastre-se Já</Link></p>
                 </ButtonContainer>
             </Card>

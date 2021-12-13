@@ -27,7 +27,7 @@ const SignUp = () => {
                     <Input placeholder="CONFIRMAR SENHA" type="password"/>
                 </InputContainer>
                 <ButtonContainer>
-                    <Button type="button" onClick={handleToSingUp}>CADASTRA-SE GRATUITAMENTE</Button>
+                    <Button type="button" onClick={handleToSingUp}>Cadastra-se gratuitamente</Button>
                     <p>Já possui conta? <Link to="/">Entre já</Link></p>
                 </ButtonContainer>
             </Card>
