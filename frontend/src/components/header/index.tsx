@@ -18,9 +18,9 @@ const Header = () =>{
                 <UserInfo>
                     <CircleContainer>PF</CircleContainer>
                     <div>
-                        <p>Olá. <span className="primary-color font-bold">Antônio</span></p>
-                        <strong>221561-1</strong><br/>
-                        <a href="#" onClick={handleLogoff}>Sair</a>
+                        <p className="second-color">Olá. <span className="second-color font-bold">Antônio</span></p>
+                        <strong className="second-color">221561-1</strong><br/>
+                        <a href="#" className="primary-color font-bold" onClick={handleLogoff}>Sair</a>
                     </div>
                 </UserInfo>
             </HeaderWrapper>

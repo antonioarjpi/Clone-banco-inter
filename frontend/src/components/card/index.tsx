@@ -15,7 +15,7 @@ const Card = ({
     noShadow = false,
 }: CardProps) => {
     return (
-        <CardContainer width={ width } height={height} noShadow ={false}>
+        <CardContainer width={ width } height={height} noShadow={ false }>
             {children}
         </CardContainer>
     )

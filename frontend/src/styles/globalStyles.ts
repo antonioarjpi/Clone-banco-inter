@@ -26,6 +26,9 @@ const GlobalStyle = createGlobalStyle`
   .primary-color{
     color: ${({theme})=> theme.colors.primary};
   }
+  .second-color{
+    color: #fff;
+  }
   .font-bold{
     font-weight: 700;
   }
