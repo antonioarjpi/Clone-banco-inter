@@ -21,6 +21,7 @@ export const HeaderContainer = styled.head`
 
     export const UserInfo = styled.div`
     display: flex;
+    align-items:center;
     justify-content: flex-end;
 
 `

@@ -8,6 +8,7 @@ export const theme = {
         background: colors.BACKGROUND,
         backgroundLight: colors.BACKGROUND2,
         red: colors.RED,
-        green: colors.GREEN
+        green: colors.GREEN,
+        black: colors.BLACK,
     }
 }
