@@ -1,28 +1,35 @@
 import api from '../api';
 
-interface SingInData{
+export interface SignInData {
     email: string;
     password: string;
 }
 
-interface SingUpData{
+export interface SignUpData {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
 }
 
-export const signIn = async (data: SingInData ) => {
-    const user = api.post('/user/singin', data)
+export interface UserDTO {
+    id: string;
+    firstName: string;
+    lastName: string;
+    accountNumber: number;
+    accountDigit: number;
+    wallet: number;
+    email: string;
+}
+
+export const signIn = async (data: SignInData) => {
+    return api.post('/user/signin', data);
+}
+
+export const signUp = async (data: SignUpData) => {
+    return api.post('/user/signup', data);
 }
 
 export const me = async () => {
-    const user = api.get('/user/singup')
+    return api.get<UserDTO>('/user/me');
 }
-
-export const signUp = async (data: SingUpData ) => {
-    const user = api.post('/user/singup', data)
-}
-
-
-
