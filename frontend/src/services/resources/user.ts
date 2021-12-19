@@ -22,11 +22,11 @@ export interface UserDTO {
     email: string;
 }
 
-export const signIn = async (data: SignInData) => {
+export const signin = async (data: SignInData) => {
     return api.post('/user/signin', data);
 }
 
-export const signUp = async (data: SignUpData) => {
+export const signup = async (data: SignUpData) => {
     return api.post('/user/signup', data);
 }
 

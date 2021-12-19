@@ -10,6 +10,24 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src *;
+               script-src 'self' 'unsafe-inline' 'unsafe-eval'
+                           127.0.0.1:*
+                           http://*.gstatic.com          
+                           http://*.googleapis.com
+                           https://*.gstatic.com
+                           https://*.googleapis.com
+                           ;
+               style-src  'self' 'unsafe-inline'
+                           127.0.0.1
+                           http://*.gstatic.com         
+                           http://*.googleapis.com
+                           https://*.gstatic.com
+                           https://*.googleapis.com
+    ">
+
+    
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/

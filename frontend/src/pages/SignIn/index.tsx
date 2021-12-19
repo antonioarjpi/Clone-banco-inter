@@ -1,5 +1,5 @@
 import { Wrapper, Background, ButtonContainer, InputContainer } from "./style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import background from '../../assets/images/background-login.jpg'
 import logoInter from '../../assets/images/logo-inter.svg'
 import Card from "../../components/card";

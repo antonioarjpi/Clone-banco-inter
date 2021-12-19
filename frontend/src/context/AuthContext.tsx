@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
-import { createContext, useEffect, useState, useCallback } from "react";
+import { createContext, useState} from "react";
 
-import { signIn, signUp, SignInData, SignUpData, me } from '../services/resources/user';
+import { signin, signup, SignInData, SignUpData, me } from '../services/resources/user';
 
 interface UserDTO{
     id: string;
@@ -27,10 +27,11 @@ export const AuthProvider: React.FC = ({children}) => {
     const [user, setUser] = useState<UserDTO>({} as UserDTO);
 
     const userSignIn = async (userData: SignInData) =>{
-        const {data} = await signIn(userData);
+        const {data} = await signin(userData);
+        
         localStorage.setItem('@Inter:token', data.accessToken);
         
-        if(data?.status == 'error'){
+        if(data?.status === 'error'){
             return data;
         }
 
@@ -42,7 +43,7 @@ export const AuthProvider: React.FC = ({children}) => {
     }
 
     const userSignUp = async (userData: SignUpData) =>{
-        const {data} = await signUp(userData);
+        const {data} = await signup(userData);
 
         localStorage.setItem('@Inter:token', data.accessToken);
 
