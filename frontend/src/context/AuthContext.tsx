@@ -29,14 +29,14 @@ export const AuthProvider: React.FC = ({children}) => {
     const userSignIn = async (userData: SignInData) =>{
         const {data} = await signin(userData);
         
-        localStorage.setItem('@Inter:token', data.accessToken);
+        localStorage.setItem('@Inter:Token', data.accessToken);
         
         if(data?.status === 'error'){
             return data;
         }
 
         if(data.accessToken){
-        localStorage.setItem('@Inter:token', data.accessToken);
+        localStorage.setItem('@Inter:Token', data.accessToken);
         }
 
         return await getCurrentUser();
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC = ({children}) => {
     const userSignUp = async (userData: SignUpData) =>{
         const {data} = await signup(userData);
 
-        localStorage.setItem('@Inter:token', data.accessToken);
+        localStorage.setItem('@Inter:Token', data.accessToken);
 
         return await getCurrentUser();
     

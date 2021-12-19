@@ -15,22 +15,22 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
-
     const {userSignIn} = useAuth();
 
     const handleToSingIn = async () => {
-    const data = {
-        email, 
-        password
-    }
+        const data = {
+            email, 
+            password
+        }
 
-    const response = await userSignIn(data);
+        const response = await userSignIn(data);
 
-    if(response.id){
-        navigate('/dashboard');
-    }
+        if(response.id){
+            navigate('/dashboard');
+            return;
+        }
 
-     alert ('Usuário ou senha inválida')
+        alert ('Usuário ou senha inválida');
 }
 
 
