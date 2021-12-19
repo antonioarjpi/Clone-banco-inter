@@ -1,6 +1,9 @@
 import {StatementItemContainer, StatementItemImage, StatementItemInfo, StatementContainer} from './styles';
-import {FiDollarSign} from 'react-icons/fi'
+import {FiDollarSign} from 'react-icons/fi';
 import {format} from 'date-fns';
+import {useState, useEffect} from 'react';
+import {transactions} from '../../../services/resources/pix'
+
 
 interface StatementItem {
     user: {
@@ -31,67 +34,21 @@ const StatementItem = ({user, value, type, updatedAt}: StatementItem) => {
 
 const Statement = () => {
 
-    const statements: StatementItem[] = [
-        {
-            user:{
-                firstName: 'Antônio',
-                lastName: 'Araújo'
-            },
-            value: 351.14,
-            type: 'pay',
-            updatedAt: new Date()
-        },
-        {
-            user:{
-                firstName: 'Antônio',
-                lastName: 'Araújo'
-            },
-            value: 25.15,
-            type: 'received',
-            updatedAt: new Date()
-        },
-        {
-            user:{
-                firstName: 'Antônio',
-                lastName: 'Araújo'
-            },
-            value: 35.00,
-            type: 'pay',
-            updatedAt: new Date()
-        },
-        {
-            user:{
-                firstName: 'José',
-                lastName: 'Araújo'
-            },
-            value: 550.00,
-            type: 'received',
-            updatedAt: new Date()
-        },
-        {
-            user:{
-                firstName: 'Rigoni',
-                lastName: 'Vieira'
-            },
-            value: 550.00,
-            type: 'received',
-            updatedAt: new Date()
-        },
-        {
-            user:{
-                firstName: 'Francisco',
-                lastName: 'Soares'
-            },
-            value: 500.00,
-            type: 'received',
-            updatedAt: new Date()
-        }
-        
-        
-    ]
+    const [statements, setStatements] = useState<StatementItem[]>([]);
+
+    const getAllTransactions = async () => {
+        const {data} = await transactions();
+
+        setStatements(data.transactions);
+    }
+
+    useEffect(()=>{
+        getAllTransactions();
+    }, [])
+
     return (
         <StatementContainer>
-            {statements.map(statement => <StatementItem {...statement}/>)}
+            {statements && statements.map(statement => <StatementItem {...statement}/>)}
         </StatementContainer>
     )
 }

@@ -6,11 +6,23 @@ import Input from '../../components/input'
 import Button from '../../components/button'
 import Statement from './Statement'
 import Footer from '../../components/footer'
+import useAuth from '../../hooks/useAuth'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
+    const {user, getCurrentUser} = useAuth();
+    const wallet = user?.wallet || 0;
+    
+    useEffect(() => {
+        getCurrentUser()
+    }, [])
 
-    const wallet = 5000;
+    if(!user){
+        return null;
+    }
+
     return (
         <DashboardBackground>
             <Header/>
