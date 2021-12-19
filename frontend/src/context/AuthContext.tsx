@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { createContext, useEffect, useState, useCallback } from "react";
 
-import { signIn, signUp, SignInData, SignUpData, me } from '../services/resource/users';
+import { signIn, signUp, SignInData, SignUpData, me } from '../services/resources/user';
 
 interface UserDTO{
     id: string;

@@ -9,8 +9,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-      <GlobalStyle />
-      <Router />
+        <GlobalStyle />
+        <Router />
       </AuthProvider>
     </ThemeProvider>
   );

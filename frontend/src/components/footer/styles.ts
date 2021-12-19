@@ -20,12 +20,6 @@ export const FooterWrapper = styled.div`
 
 `
 
-export const SocialIcon = styled.div`
-    margin-right: 15px;
-    justify-content: flex-end;
-    align-items: left;
 
-
-`
 
 

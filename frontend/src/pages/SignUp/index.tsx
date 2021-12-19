@@ -11,7 +11,7 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const handleToSingUp = () => {
-        navigate('/signin')
+        navigate('/')
     }
     
     return (
@@ -20,11 +20,11 @@ const SignUp = () => {
             <Card width="403px" height="auto">
                 <img src={logoInter} width={172} height={61} alt="logo inter"/>
                 <InputContainer>
-                    <Input placeholder="NOME"/>
-                    <Input placeholder="SOBRENOME"/>
-                    <Input placeholder="EMAIL"/>
-                    <Input placeholder="SENHA" type="password"/>
-                    <Input placeholder="CONFIRMAR SENHA" type="password"/>
+                    <Input placeholder="Nome" />
+                    <Input placeholder="Sobrenome" />
+                    <Input placeholder="E-mail" />
+                    <Input placeholder="Senha" type="password" />
+                    <Input placeholder="Confirmar Senha" type="password" />
                 </InputContainer>
                 <ButtonContainer>
                     <Button type="button" onClick={handleToSingUp}>Cadastra-se gratuitamente</Button>

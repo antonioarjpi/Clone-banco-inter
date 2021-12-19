@@ -1,6 +1,4 @@
-import { FooterContainer, SocialIcon, FooterWrapper } from "./styles";
-import { useNavigate } from "react-router-dom";
-
+import { FooterContainer, FooterWrapper } from "./styles";
 import ImgFooter from '../../assets/images/img-footer.png'
 import Github from '../../assets/images/footer/github_icon.png'
 import Gmail from '../../assets/images/footer/gmail_icon.png'
@@ -8,13 +6,6 @@ import Whatsapp from '../../assets/images/footer/whatsapp_icon.png'
 import Linkdin from '../../assets/images/footer/linkedin_icon.png'
 
 const Footer = () =>{
-
-    const navigate = useNavigate();
-
-    const handleLogoff = () =>{
-        navigate('/signin')
-    }
-
     return (
         <FooterContainer>
             <FooterWrapper>
