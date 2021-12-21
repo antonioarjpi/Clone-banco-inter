@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../components/button'
 import Card from '../../components/card'
@@ -6,7 +6,6 @@ import Input from '../../components/input'
 import background from '../../assets/images/background-login.jpg'
 import logoInter from '../../assets/images/logo-inter.svg'
 import { Background, ButtonContainer, InputContainer, Wrapper } from '../SignUp/style'
-import api from '../../services/api'
 import useAuth from '../../hooks/useAuth'
 
 const SignUp = () => {
@@ -15,6 +14,7 @@ const SignUp = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const {userSignUp} = useAuth();
     const navigate = useNavigate();
@@ -27,11 +27,17 @@ const SignUp = () => {
             email,
             password
         }
-        
+        try{
             const response = await userSignUp(data);
-            navigate('/');            
-           
-    }
+   
+            if(response.email){
+                navigate('/');
+                return;
+            }
+        }catch(e){
+            setError('E-mail já cadastrado');
+        }
+    }  
     
     return (
         <Wrapper>
@@ -41,6 +47,7 @@ const SignUp = () => {
                 <InputContainer>
                     <Input placeholder="Nome" value={firstName} onChange={e => setfirstName(e.target.value)}/>
                     <Input placeholder="Sobrenome" value={lastName} onChange={e => setLastName(e.target.value)}/>
+                    {error &&( <p className="alert">{error}</p>) }
                     <Input placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} />
                     <Input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} />
                     <Input placeholder="Confirmar Senha" type="password" />

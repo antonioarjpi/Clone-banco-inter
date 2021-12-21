@@ -6,7 +6,7 @@ export const ButtonContainer = styled.button`
 
     color: ${({theme}) => theme.colors.background};
     background: ${({theme}) => theme.colors.primary};
-    border: 1px solid ${({theme}) => theme.colors.primary};
+    border: 1px solid;
     border-radius: 10px;
     font-size: 18px;
     letter-spacing: .3px;
@@ -18,8 +18,10 @@ export const ButtonContainer = styled.button`
     z-index: 5000;
     transition: all .5s ease;
 
-    &:hover{
-        filter: opacity(0.6)
+    &:hover, &:focus {
+        outline: none;
+        cursor: pointer;
+        filter: opacity(0.8);
     }
 
     &:disabled{
