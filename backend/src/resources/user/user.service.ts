@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Users } from '../../entity/Users'
+import { User } from '../../entity/User'
 import md5 from 'crypto-js/md5'
 import { UserSignIn } from './dto/user.signin.dto';
 import { UserSignUp } from './dto/user.signup.dto';
@@ -10,11 +10,11 @@ import authConfig from '../../config/auth'
 export default class UserService{
 
     async signin(user: UserSignIn){
-        const userRepository = getRepository(Users);
+        const userRepository = getRepository(User);
         const {email, password} = user;
         const passwordHash = md5(password).toString();
 
-        const existUser = await userRepository.findOne({where: {email, password: passwordHash}})
+        const existUser = await userRepository.findOne({where: {email, password: passwordHash}});
 
         if(!existUser){
             throw new AppError('Usuário não encontrado', 401);
@@ -40,7 +40,7 @@ export default class UserService{
     }
 
     async signup(user: UserSignUp){
-        const userRepository = getRepository(Users);
+        const userRepository = getRepository(User);
 
         const existUser = await userRepository.findOne({where: {email: user.email}});
 
@@ -75,8 +75,8 @@ export default class UserService{
         
     }
 
-    async me(user: Partial<Users>){
-        const userRepository = getRepository(Users);
+    async me(user: Partial<User>){
+        const userRepository = getRepository(User);
         const currentUser = await userRepository.findOne({where: {id: user.id}});
 
         if (!currentUser){

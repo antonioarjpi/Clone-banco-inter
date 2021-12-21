@@ -18,7 +18,7 @@ const Header = () =>{
     return (
         <HeaderContainer>
             <HeaderWrapper>
-                <img src={logoInter} width={172} height={61} alt="logo inter" />
+                <a className="#" href="#"><img src={logoInter} width={172} height={61} alt="logo inter" /></a>
                 <UserInfo>
                     <CircleContainer>{initials}</CircleContainer>
                     <div>

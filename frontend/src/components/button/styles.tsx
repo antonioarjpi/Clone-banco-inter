@@ -11,7 +11,6 @@ export const ButtonContainer = styled.button`
     font-size: 18px;
     letter-spacing: .3px;
     outline: none;
-    padding: 9px 20px 7px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -20,7 +19,7 @@ export const ButtonContainer = styled.button`
     transition: all .5s ease;
 
     &:hover{
-        filter: opacity(0.8)
+        filter: opacity(0.6)
     }
 
     &:disabled{

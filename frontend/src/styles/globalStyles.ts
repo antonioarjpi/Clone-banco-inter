@@ -47,6 +47,21 @@ const GlobalStyle = createGlobalStyle`
     color: #000;
   }
 
+  .alert{
+    font-size: 0.9rem;
+    color: ${({theme})=> theme.colors.red};
+    animation: tremer 0.1s;
+    animation-iteration-count: 3;
+  }
+
+  @keyframes tremer {
+    0% {margin-left: 0;}
+    25% {margin-left: 7px;}
+    50% {margin-left: 0;}
+    75% {margin-left: -7px;}
+    100% {margin-left: 0;}
+}
+
   .social{
     text-align: center;
     padding-top: 25px;

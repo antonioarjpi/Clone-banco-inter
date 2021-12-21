@@ -7,9 +7,9 @@ export default class UserController {
     async request (req: Request, res: Response) {
         const pixService = new PixService();
         const {value} = req.body;
-        const user = req.user
+        const user = req.user;
         const requestKey = await pixService.request(value, user);
-
+        
         return res.status(200).send({copyPasteKey: requestKey})
     }
 
@@ -24,7 +24,6 @@ export default class UserController {
     async transactions (req: Request, res: Response) {
         const pixService = new PixService();
         const transactions = await pixService.transactions(req.user);
-
         return res.status(201).send({transactions})
     }
 }

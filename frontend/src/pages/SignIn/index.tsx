@@ -8,11 +8,11 @@ import Button from "../../components/button";
 import { Link, useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-
 const SignIn = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
 
     const navigate = useNavigate();
     const {userSignIn} = useAuth();
@@ -23,15 +23,18 @@ const SignIn = () => {
             password
         }
 
-        const response = await userSignIn(data);
+        try{
+            const response = await userSignIn(data);
 
-        if(response.id){
-            navigate('/dashboard');
-            return;
-        }
-
-        alert ('Usuário ou senha inválida');
-}
+            if(response.id){
+                navigate('/dashboard');
+                return;
+            }
+            } catch(e) {
+                setLoginError("E-mail ou senha inválida");
+            
+            }
+        }      
 
 
     return (
@@ -42,6 +45,10 @@ const SignIn = () => {
                 <InputContainer>
                     <Input placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} />
                     <Input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                    {loginError && (                       
+                                <p className="alert">{loginError}</p>
+         
+                        )}  
                 </InputContainer>
                 <ButtonContainer>
                     <Button type="button" onClick={handleToSingIn}>Entrar</Button>

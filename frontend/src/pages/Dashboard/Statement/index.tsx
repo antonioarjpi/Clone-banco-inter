@@ -11,7 +11,7 @@ interface StatementItem {
         lastName: string
     },
     value: number,
-    type: 'pay' | 'received',
+    type: 'paid' | 'received',
     updatedAt: Date
 }
 
@@ -25,8 +25,8 @@ const StatementItem = ({user, value, type, updatedAt}: StatementItem) => {
                 <p className="primary-color">
                     {value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
                 </p>
-                <p className="">{type === 'pay' ? `Pago a `: `Recebido de`} <strong>{user.firstName} {user.lastName}</strong></p>
-                <p className="">{format(updatedAt, "dd/MM/yyyy 'às' HH:mm'h'")}</p>
+                <p>{type === 'paid' ? 'Pago a' : 'Recebido de'} <strong>{user.firstName} {user.lastName}</strong></p>
+                <p className="">{format(new Date(updatedAt), "dd/MM/yyyy 'às' HH:mm'h'")}</p>
             </StatementItemInfo>
         </StatementItemContainer>
     )
@@ -42,13 +42,13 @@ const Statement = () => {
         setStatements(data.transactions);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getAllTransactions();
-    }, [])
+    }, []);
 
     return (
         <StatementContainer>
-            {statements && statements.map(statement => <StatementItem {...statement}/>)}
+            {statements.length > 0 && statements.map(statement => <StatementItem {...statement}/>)}
         </StatementContainer>
     )
 }
