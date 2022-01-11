@@ -14,6 +14,7 @@ Preview:
 * [TypeScript](https://www.typescriptlang.org/)
 * [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
 * [TypeORM](https://typeorm.io/#/)
+* [PostgreSQL](https://www.postgresql.org/)
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 * [Express-async-errors](https://www.npmjs.com/package/express-async-errors)
 * [Crypto-Js](https://www.npmjs.com/package/crypto-js)
